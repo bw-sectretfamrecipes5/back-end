@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 
 // const usersRouter = require(''); // @TODO: Add route base on app
-// const authenticator = require('./authenticator');
+const authenticator = require("./authenticator");
 const registerRouter = require("../users/register-router");
 const loginRouter = require("../users/login-router");
 
@@ -17,7 +17,7 @@ server.use(cors());
 server.use("/api/register", registerRouter);
 server.use("/api/login", loginRouter);
 // server.use('/api/users', authenticator, usersRouter);
-server.use("/api/recipes", recipesRouter);
+server.use("/api/recipes", authenticator, recipesRouter);
 
 server.get("/", (req, res) => {
   res.json({ api: "up" });
