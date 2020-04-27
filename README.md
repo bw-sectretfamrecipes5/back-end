@@ -28,6 +28,7 @@
 ```
 
 **Recipe**
+```
 {
   title,
   source,
@@ -35,3 +36,4 @@
   instructions,
   category,
 }
+```
