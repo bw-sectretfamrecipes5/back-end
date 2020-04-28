@@ -89,7 +89,7 @@ router.put("/:id/recipe/:recipe_id", (req, res) => {
     .findByRecipeId(id, recipe_id)
     .then((recipe) => {
       if (recipe.length) {
-        recipes.update(changes, id).then((updatedRecipe) => {
+        recipes.update(changes, recipe_id).then((updatedRecipe) => {
           res.json({ updated: updatedRecipe });
         });
       } else {
