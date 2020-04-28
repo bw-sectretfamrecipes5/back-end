@@ -6,9 +6,17 @@ const router = express.Router();
 
 //get all recipes for a user
 router.get("/:id", (req, res) => {
+  const { id } = req.params;
+
   recipes
-    .find()
-    .then((recipes) => res.status(200).json(recipes))
+    .findById(id)
+    .then((recipes) => {
+      if (recipes.length) {
+        res.status(200).json(recipes)
+      } else {
+        res.status(404).json({ message: "No recipes found." });
+      }
+    })
     .catch((err) =>
       res
         .status(500)
@@ -16,7 +24,7 @@ router.get("/:id", (req, res) => {
     );
 });
 
-// get a recipe by car id
+// get a recipe by id
 router.get("/:id", (req, res) => {
   const { id } = req.params;
 

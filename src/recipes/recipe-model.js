@@ -1,18 +1,19 @@
 const db = require("../database/dbConfig");
 module.exports = {
-  find,
   findById,
   insert,
   update,
   remove,
 };
 
-function find() {
-  return db("recipes");
+function findById(id) {
+  return db("recipes")
+    .join('recipeDetails', 'recipeDetails.recipe_id', 'recipes.id')
+    .where('recipeDetails.user_id', id);
 }
 
-function findById(id) {
-  return db("recipes").where({ id }).first();
+function findByTitle(title) {
+  return db("recipes")
 }
 
 function insert(recipe) {

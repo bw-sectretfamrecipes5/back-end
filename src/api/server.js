@@ -16,8 +16,7 @@ server.use(cors());
 
 server.use("/api/register", registerRouter);
 server.use("/api/login", loginRouter);
-// server.use('/api/users', authenticator, usersRouter);
-server.use("/api/recipes", authenticator, recipesRouter);
+server.use("/api/recipe", authenticator, recipesRouter);
 
 server.get("/", (req, res) => {
   res.json({ api: "up" });
