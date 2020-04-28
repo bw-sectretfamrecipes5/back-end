@@ -4,8 +4,8 @@ const recipes = require("./recipe-model");
 
 const router = express.Router();
 
-//get all recipes
-router.get("/", (req, res) => {
+//get all recipes for a user
+router.get("/:id", (req, res) => {
   recipes
     .find()
     .then((recipes) => res.status(200).json(recipes))

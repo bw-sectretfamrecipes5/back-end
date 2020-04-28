@@ -14,7 +14,7 @@
 |  Get Recipe by title   |  GET   |  /recipe/title?search={title}   |       Recipe title        |        Recipe        |
 | Get Recipe by category |  GET   | /recipe/category?search={title} |      Recipe category      |   Array of recipes   |
 |      Add Recipes       |  POST  |           /recipe/:id           |   User id, Recipe Model   |      New recipe      |
-|      Edit Recipe       |  PUT   |           /recipe/:id           |      Updated recipe       |    Updated recipe    |
+|      Edit Recipe       |  PUT   |           /recipe/:id           |        Recipe id          |    Updated recipe    |
 |     Delete Recipe      | DELETE |           /recipe/:id           |        Recipe id          |    Deleted recipe    |
 
 ## Data Models
