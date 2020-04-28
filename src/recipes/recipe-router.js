@@ -12,7 +12,7 @@ router.get("/:id/recipe", (req, res) => {
     .findById(id)
     .then((recipes) => {
       if (recipes.length) {
-        res.status(200).json(recipes)
+        res.status(200).json(recipes);
       } else {
         res.status(404).json({ message: "No recipes found." });
       }
@@ -109,7 +109,7 @@ router.delete("/:id/recipe/:recipe_id", (req, res) => {
   recipes
     .remove(id, recipe_id)
     .then((deleted) => {
-      console.log('deleted', deleted)
+      console.log("deleted", deleted);
       if (deleted) {
         res.json({ removed: deleted });
       } else {
