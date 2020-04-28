@@ -16,6 +16,7 @@
 |      Add Recipes       |  POST  |            /:id/recipe/             |        Recipe Model       |      New recipe      |
 |      Edit Recipe       |  PUT   |           /:id/recipe/:id           |                           |    Updated recipe    |
 |     Delete Recipe      | DELETE |           /:id/recipe/:id           |                           |    Deleted recipe    |
+
 *:id before `/recipe` is the User id*
 *:id after `/recipe` is the Recipe id*
 
