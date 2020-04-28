@@ -17,7 +17,7 @@ exports.up = function(knex) {
     .createTable('recipeDetails', tbl => {
       tbl.increments('id');
       tbl.integer('user_id').notNullable().references('id').inTable('users');
-      tbl.integer('recipe_id').notNullable().references('id').inTable('recipes');
+      tbl.integer('recipe_id').notNullable().references('id').inTable('recipes').onDelete('cascade');
     });
 };
 

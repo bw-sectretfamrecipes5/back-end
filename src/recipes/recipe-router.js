@@ -5,7 +5,7 @@ const recipes = require("./recipe-model");
 const router = express.Router();
 
 //get all recipes for a user
-router.get("/:id", (req, res) => {
+router.get("/:id/recipe", (req, res) => {
   const { id } = req.params;
 
   recipes
@@ -25,11 +25,32 @@ router.get("/:id", (req, res) => {
 });
 
 // get a recipe by id
-router.get("/:id", (req, res) => {
+router.get("/:id/recipe/title", (req, res) => {
   const { id } = req.params;
+  const { title } = req.query;
 
   recipes
-    .findById(id)
+    .findByTitle(id, title)
+    .then((recipe) => {
+      if (recipe) {
+        res.json(recipe);
+      } else {
+        res
+          .status(404)
+          .json({ message: "Could not find the recipe with given id." });
+      }
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "Failed to get recipe" });
+    });
+});
+
+router.get("/:id/recipe/category", (req, res) => {
+  const { id } = req.params;
+  const { category } = req.query;
+
+  recipes
+    .findByCategory(id, category)
     .then((recipe) => {
       if (recipe) {
         res.json(recipe);
@@ -45,11 +66,12 @@ router.get("/:id", (req, res) => {
 });
 
 // add a recipe
-router.post("/", (req, res) => {
+router.post("/:id/recipe", (req, res) => {
   const newRecipe = req.body;
+  const { id } = req.params;
 
   recipes
-    .insert(newRecipe)
+    .insert(newRecipe, id)
     .then((result) => res.status(201).json(result))
     .catch((err) =>
       res.status(400).json({
@@ -60,13 +82,13 @@ router.post("/", (req, res) => {
 });
 
 //update recipes
-router.put("/:id", (req, res) => {
-  const { id } = req.params;
+router.put("/:id/recipe/:recipe_id", (req, res) => {
+  const { id, recipe_id } = req.params;
   const changes = req.body;
   recipes
-    .findById(id)
+    .findByRecipeId(id, recipe_id)
     .then((recipe) => {
-      if (recipe) {
+      if (recipe.length) {
         recipes.update(changes, id).then((updatedRecipe) => {
           res.json({ updated: updatedRecipe });
         });
@@ -81,12 +103,13 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
-  const { id } = req.params;
+router.delete("/:id/recipe/:recipe_id", (req, res) => {
+  const { id, recipe_id } = req.params;
 
   recipes
-    .remove(id)
+    .remove(id, recipe_id)
     .then((deleted) => {
+      console.log('deleted', deleted)
       if (deleted) {
         res.json({ removed: deleted });
       } else {
