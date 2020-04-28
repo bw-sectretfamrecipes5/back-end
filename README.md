@@ -18,6 +18,7 @@
 |     Delete Recipe      | DELETE |           /:id/recipe/:id           |                           |    Deleted recipe    |
 
 *:id before `/recipe` is the User id*
+
 *:id after `/recipe` is the Recipe id*
 
 ## Data Models
