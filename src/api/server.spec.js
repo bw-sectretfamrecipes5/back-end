@@ -1,6 +1,7 @@
 request = require("supertest");
 
 const server = require("./server.js");
+const db = require('../database/dbConfig');
 
 describe("server", function () {
   it("runs the tests", function () {
@@ -28,7 +29,7 @@ describe("server", function () {
         });
     });
 
-    it("should return JSON", function () {
+    it("get correct res", function () {
       // make a GET request to /
       return request(server)
         .get("/")
