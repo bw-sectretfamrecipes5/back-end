@@ -1,9 +1,9 @@
 module.exports = {
   development: {
-    client: 'sqlite3', //@TODO: change to MySQL
+    client: 'sqlite3', 
     useNullAsDefault: true,
     connection: {
-      filename: './src/database/users.db3', //@TODO: change to MySQL
+      filename: './src/database/users.db3',
     },
     pool: {
       afterCreate: (conn, done) => {
