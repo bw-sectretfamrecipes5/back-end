@@ -1,11 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 
-// const usersRouter = require(''); // @TODO: Add route base on app
 const authenticator = require("./authenticator");
 const registerRouter = require("../users/register-router");
 const loginRouter = require("../users/login-router");
-
 //recipes
 const recipesRouter = require("../recipes/recipe-router");
 
