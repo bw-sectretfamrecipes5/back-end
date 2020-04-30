@@ -4,7 +4,6 @@ const recipes = require("./recipe-model");
 
 const router = express.Router();
 
-//get all recipes for a user
 router.get("/:id/recipe", (req, res) => {
   const { id } = req.params;
 
@@ -24,7 +23,6 @@ router.get("/:id/recipe", (req, res) => {
     );
 });
 
-// get a recipe by id
 router.get("/:id/recipe/title", (req, res) => {
   const { id } = req.params;
   const { title } = req.query;
@@ -65,7 +63,6 @@ router.get("/:id/recipe/category", (req, res) => {
     });
 });
 
-// add a recipe
 router.post("/:id/recipe", (req, res) => {
   const newRecipe = req.body;
   const { id } = req.params;
@@ -81,7 +78,6 @@ router.post("/:id/recipe", (req, res) => {
     );
 });
 
-//update recipes
 router.put("/:id/recipe/:recipe_id", (req, res) => {
   const { id, recipe_id } = req.params;
   const changes = req.body;
@@ -109,7 +105,6 @@ router.delete("/:id/recipe/:recipe_id", (req, res) => {
   recipes
     .remove(id, recipe_id)
     .then((deleted) => {
-      console.log("deleted", deleted);
       if (deleted) {
         res.json({ removed: deleted });
       } else {
