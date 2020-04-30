@@ -103,7 +103,7 @@ describe("POST /api/login", () => {
 });
 
 describe("Recipe", () => {
-  describe("POST /api/:id/recipe", async () => {
+  describe("POST /api/:id/recipe", () => {
     let res;
     let token;
     beforeAll(async () => {
@@ -129,7 +129,7 @@ describe("Recipe", () => {
     });
   });
 
-  describe("GET /api/:id/recipe", async () => {
+  describe("GET /api/:id/recipe", () => {
     let res;
     let token;
     beforeAll(async () => {
@@ -156,7 +156,7 @@ describe("Recipe", () => {
     });
   });
 
-  describe("GET /api/:id/recipe/title", async () => {
+  describe("GET /api/:id/recipe/title", () => {
     let res;
     let token;
     beforeAll(async () => {
@@ -179,7 +179,7 @@ describe("Recipe", () => {
     });
   });
 
-  describe("GET /api/:id/category", async () => {
+  describe("GET /api/:id/category", () => {
     let res;
     let token;
     beforeAll(async () => {
@@ -202,7 +202,7 @@ describe("Recipe", () => {
     });
   });
 
-  describe("PUT /api/:id/recipe/:recipe_id", async () => {
+  describe("PUT /api/:id/recipe/:recipe_id", () => {
     let res;
     let token;
     beforeAll(async () => {
@@ -225,7 +225,7 @@ describe("Recipe", () => {
     }); 
   });
 
-  describe("DELETE /api/:id/recipe/:recipe_id", async () => {
+  describe("DELETE /api/:id/recipe/:recipe_id", () => {
     let res;
     let token;
     beforeAll(async () => {
