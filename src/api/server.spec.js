@@ -133,14 +133,14 @@ describe("Recipe", () => {
     let res;
     let token;
     beforeAll(async () => {
-    await db('users').truncate();
-    await db('recipes').truncate();
-    await request(server).post('/api/register').send({ username: 'test', password: 'password', email: 'test@email.com' });
-    res = await request(server).post('/api/login').send({ username: 'test', password: 'password' });
-    token = res.body.token;
-    await request(server).post('/api/1/recipe').send(recipe).set({ 'Authorization': token });
-    res = await request(server).get('/api/1/recipe').set({ 'Authorization': token });
-  });
+      await db('users').truncate();
+      await db('recipes').truncate();
+      await request(server).post('/api/register').send({ username: 'test', password: 'password', email: 'test@email.com' });
+      res = await request(server).post('/api/login').send({ username: 'test', password: 'password' });
+      token = res.body.token;
+      await request(server).post('/api/1/recipe').send(recipe).set({ 'Authorization': token });
+      res = await request(server).get('/api/1/recipe').set({ 'Authorization': token });
+    });
 
   it('status 200', async () => {
       expect(res.status).toBe(200);
@@ -160,14 +160,14 @@ describe("Recipe", () => {
     let res;
     let token;
     beforeAll(async () => {
-    await db('users').truncate();
-    await db('recipes').truncate();
-    await request(server).post('/api/register').send({ username: 'test', password: 'password', email: 'test@email.com' });
-    res = await request(server).post('/api/login').send({ username: 'test', password: 'password' });
-    token = res.body.token;
-    await request(server).post('/api/1/recipe').send(recipe).set({ 'Authorization': token });
-    res = await request(server).get('/api/1/recipe/title?title=Fancy Scrambled Eggs').set({ 'Authorization': token });
-  });
+      await db('users').truncate();
+      await db('recipes').truncate();
+      await request(server).post('/api/register').send({ username: 'test', password: 'password', email: 'test@email.com' });
+      res = await request(server).post('/api/login').send({ username: 'test', password: 'password' });
+      token = res.body.token;
+      await request(server).post('/api/1/recipe').send(recipe).set({ 'Authorization': token });
+      res = await request(server).get('/api/1/recipe/title?title=Fancy Scrambled Eggs').set({ 'Authorization': token });
+    });
 
     it('finds recipe', async () => {
       expect(res.body[0]).toBeTruthy();
@@ -183,14 +183,14 @@ describe("Recipe", () => {
     let res;
     let token;
     beforeAll(async () => {
-    await db('users').truncate();
-    await db('recipes').truncate();
-    await request(server).post('/api/register').send({ username: 'test', password: 'password', email: 'test@email.com' });
-    res = await request(server).post('/api/login').send({ username: 'test', password: 'password' });
-    token = res.body.token;
-    await request(server).post('/api/1/recipe').send(recipe).set({ 'Authorization': token });
-    res = await request(server).get('/api/1/recipe/category?category=eggs').set({ 'Authorization': token });
-  });
+      await db('users').truncate();
+      await db('recipes').truncate();
+      await request(server).post('/api/register').send({ username: 'test', password: 'password', email: 'test@email.com' });
+      res = await request(server).post('/api/login').send({ username: 'test', password: 'password' });
+      token = res.body.token;
+      await request(server).post('/api/1/recipe').send(recipe).set({ 'Authorization': token });
+      res = await request(server).get('/api/1/recipe/category?category=eggs').set({ 'Authorization': token });
+    });
 
     it('finds recipe', async () => {
       expect(res.body[0]).toBeTruthy();
@@ -206,14 +206,14 @@ describe("Recipe", () => {
     let res;
     let token;
     beforeAll(async () => {
-    await db('users').truncate();
-    await db('recipes').truncate();
-    await request(server).post('/api/register').send({ username: 'test', password: 'password', email: 'test@email.com' });
-    res = await request(server).post('/api/login').send({ username: 'test', password: 'password' });
-    token = res.body.token;
-    await request(server).post('/api/1/recipe').send(recipe).set({ 'Authorization': token });
-    res = await request(server).put('/api/1/recipe/1').send({...recipe, title: 'Special Eggs'}).set({ 'Authorization': token });
-  });
+      await db('users').truncate();
+      await db('recipes').truncate();
+      await request(server).post('/api/register').send({ username: 'test', password: 'password', email: 'test@email.com' });
+      res = await request(server).post('/api/login').send({ username: 'test', password: 'password' });
+      token = res.body.token;
+      await request(server).post('/api/1/recipe').send(recipe).set({ 'Authorization': token });
+      res = await request(server).put('/api/1/recipe/1').send({...recipe, title: 'Special Eggs'}).set({ 'Authorization': token });
+    });
 
     it('one record updated', async () => {
       expect(res.body.updated).toBe(1);
@@ -229,14 +229,14 @@ describe("Recipe", () => {
     let res;
     let token;
     beforeAll(async () => {
-    await db('users').truncate();
-    await db('recipes').truncate();
-    await request(server).post('/api/register').send({ username: 'test', password: 'password', email: 'test@email.com' });
-    res = await request(server).post('/api/login').send({ username: 'test', password: 'password' });
-    token = res.body.token;
-    await request(server).post('/api/1/recipe').send(recipe).set({ 'Authorization': token });
-    res = await request(server).delete('/api/1/recipe/1').set({ 'Authorization': token });
-  });
+      await db('users').truncate();
+      await db('recipes').truncate();
+      await request(server).post('/api/register').send({ username: 'test', password: 'password', email: 'test@email.com' });
+      res = await request(server).post('/api/login').send({ username: 'test', password: 'password' });
+      token = res.body.token;
+      await request(server).post('/api/1/recipe').send(recipe).set({ 'Authorization': token });
+      res = await request(server).delete('/api/1/recipe/1').set({ 'Authorization': token });
+    });
 
     it('delete 1 recipe', async () => {
       expect(res.body.removed).toBe(1);
